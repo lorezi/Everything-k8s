@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-manual
+  labels:
+    name: kubia-manual
+spec:
+  containers:
+  - name: kubia-manual
+    image: beastz/kubia
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8080
+        protocol: TCP
