@@ -4,9 +4,11 @@ metadata:
   name: kubia-manual
   labels:
     name: kubia-manual
+    creation_method: manual
+    env: prod
 spec:
   containers:
-  - name: kubia-manual
+  - name: kubia
     image: beastz/kubia
     resources:
       limits:
