@@ -1,21 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: fortune
+  name: gitrepo-volume-pod
   labels:
-    name: fortune
+    name: gitrepo-volume-pod
 spec:
   containers:
-  - name: html-generator
-    image: luksa/fortune
-    volumeMounts:
-      - mountPath: /var/htdocs
-        name: html
-    resources:
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
-  - name: web-server
+  - name: gitrepo-volume-pod
     image: nginx:alpine
     volumeMounts:
       - mountPath: /usr/share/nginx/html
@@ -27,8 +18,9 @@ spec:
         cpu: "500m"
     ports:
       - containerPort: 80
-        protocol: TCP
   volumes:
     - name: html
-      emptyDir:
-        medium: Memory
+      gitRepo:
+        repository: https://github.com/lorezi/kubia-website-example.git
+        revision: master
+        directory: .
