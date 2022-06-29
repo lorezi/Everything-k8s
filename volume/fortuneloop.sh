@@ -1,6 +1,6 @@
 #!/bin/bash
 trap "exit" SIGINT
-mkdir /var/htdocs
+mkdir -p /var/htdocs
 while:
 do
 	echo $(date) Writing fortune to /var/htdocs/index.html
